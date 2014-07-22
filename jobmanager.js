@@ -1,4 +1,4 @@
-var common=require('./../processingnodeclient/src/common.js').common;
+var common=require('./common.js').common;
 exports.JobManager=JobManager;
 
 function JobManager(NODESERVER) {

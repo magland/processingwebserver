@@ -1,11 +1,11 @@
 var	url = require('url');
 var http = require('http');
 var wisdmconfig=require('./wisdmconfig').wisdmconfig;	
-var common=require('./../processingnodeclient/src/common.js').common;
+var common=require('./common.js').common;
 var temporaryfileserver=require('./temporaryfileserver').temporaryfileserver;
-var WISDMUSAGE=require('../processingnodeclient/src/wisdmusage').WISDMUSAGE;
-WISDMUSAGE.startPeriodicWritePendingRecords();
-WISDMUSAGE.setCollectionName('processingwebserver');
+//var WISDMUSAGE=require('../processingnodeclient/src/wisdmusage').WISDMUSAGE;
+//WISDMUSAGE.startPeriodicWritePendingRecords();
+//WISDMUSAGE.setCollectionName('processingwebserver');
 var SessionHandler=require('./sessionhandler.js').SessionHandler;
 var JobManager=require('./jobmanager').JobManager;
 	
@@ -33,12 +33,12 @@ function on_request(request,callback) {
 	function on_request_part2() {
 		
 		var user_id=(request.auth_info||{}).user_id;
-		WISDMUSAGE.addRecord({
+		/*WISDMUSAGE.addRecord({
 			user_id:user_id,
 			usage_type:'request_bytes',
 			amount:JSON.stringify(request).length,
 			name:request.command||''
-		});
+		});*/
 		
 		
 		var service=request.service||'';
@@ -70,12 +70,12 @@ function on_request(request,callback) {
 		
 		function finalize(tmp) {
 			
-			WISDMUSAGE.addRecord({
+			/*WISDMUSAGE.addRecord({
 				user_id:user_id,
 				usage_type:'response_bytes',
 				amount:JSON.stringify(tmp).length,
 				name:request.command||''
-			});
+			});*/
 			if (callback) callback(tmp);
 		}
 	}
@@ -183,12 +183,12 @@ http.createServer(function (REQ, RESP) {
 				var bytes_written=(REQ.socket||{}).bytesWritten||0;
 				bytes_written-=previous_bytes_written;
 				if (bytes_written>0) {
-					WISDMUSAGE.addRecord({
+					/*WISDMUSAGE.addRecord({
 						user_id:'',
 						usage_type:'file_server_bytes',
 						amount:bytes_written,
 						name:''
-					});
+					});*/
 				}
 			});
 			

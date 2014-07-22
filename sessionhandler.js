@@ -1,4 +1,4 @@
-var common=require('../processingnodeclient/src/common').common;
+var common=require('./common').common;
 
 function SessionHandler() {
 	var that=this;

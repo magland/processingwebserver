@@ -1,6 +1,6 @@
-var WisdmSocket=require('../processingnodeclient/src/wisdmsocket').WisdmSocket;
+var WisdmSocket=require('./wisdmsocket').WisdmSocket;
 var wisdmconfig=require('./wisdmconfig').wisdmconfig;
-var DATABASE=require('../processingnodeclient/src/databasemanager').DATABASE;
+var DATABASE=require('./databasemanager').DATABASE;
 
 function ProcessingNodeServer() {
 	var that=this;

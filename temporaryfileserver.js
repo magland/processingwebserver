@@ -1,8 +1,8 @@
 
-var common=require('../processingnodeclient/src/common').common;
+var common=require('./common').common;
 var wisdmconfig=require('./wisdmconfig').wisdmconfig;
 var fs=require('fs');
-var DATABASE=require('../processingnodeclient/src/databasemanager').DATABASE;
+var DATABASE=require('./databasemanager').DATABASE;
 
 function temporaryfileserver(request,callback) {
 	var user_id=(request.auth_info||{}).user_id;
